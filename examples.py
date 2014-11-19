@@ -12,13 +12,16 @@ from tweeter import t
 # get your own timeline
 statuses = t.statuses.home_timeline()
 # statuses = t.statuses.user_timeline(screen_name="h0use")  # get someone elses
+print("My timeline:")
 for status in statuses:
     print("%s: %s" % (status['user']['screen_name'], status['text']))
 
 print('/')
 
 # retrieve followers
-follower_ids = t.followers.ids(screen_name="angryhermitbot")['ids']
+screen_name = "angryhermitbot"
+print("Followers of %s: " % screen_name)
+follower_ids = t.followers.ids(screen_name=screen_name)['ids']
 for follower_id in follower_ids:
     user = t.users.show(user_id=follower_id)
     print(user['screen_name'])
@@ -26,6 +29,7 @@ for follower_id in follower_ids:
 print('/')
 
 # mentions of you
+print("Mentions of me:")
 statuses = t.statuses.mentions_timeline()
 for status in statuses:
     print("%s: %s" % (status['user']['screen_name'], status['text']))
@@ -33,6 +37,7 @@ for status in statuses:
 print('/')
 
 # search for tweets on a topic
+print("Mentions of frankenstein:")
 topic = "frankenstein"
 statuses = t.search.tweets(q=topic)['statuses']
 for status in statuses:
