@@ -17,7 +17,7 @@ for status in statuses:
 
 print('/')
 
-# initialize Twitter and retrieve followers
+# retrieve followers
 follower_ids = t.followers.ids(screen_name="angryhermitbot")['ids']
 for follower_id in follower_ids:
     user = t.users.show(user_id=follower_id)
